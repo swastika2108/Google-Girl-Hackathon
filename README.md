@@ -19,11 +19,16 @@ The <b> U-Net </b> is convolutional network architecture for fast and precise se
 
 - The decoder, on the other hand, gradually recovers the object details and spatial dimensions.
 
+##  Running the app
+> conda create -n ggh python=3.9 <br>
+> conda activate ggh <br>
+> pip install -r requirements.txt <br>
+> streamlit run app.py --server.enableXsrfProtection false
+
 ## Predictions
 
 ![alt text](imgs/1.png)
 ![alt text](imgs/2.png)
-
 
 
           
