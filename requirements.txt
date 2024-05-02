@@ -1,0 +1,7 @@
+keras==3.3.3
+matplotlib==3.8.4
+numpy==1.26.4
+opencv_python==4.9.0.80
+tensorflow==2.16.1
+tqdm==4.66.2
+streamlit
