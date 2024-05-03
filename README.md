@@ -36,5 +36,5 @@ The <b> U-Net </b> is convolutional network architecture for fast and precise se
 The solution provided utilizes Convolutional neural networks trained on pairs of water-bodies and their masks that leverages remote sensing data for robust water segmentation, ultimately aiding flood response teams with precise location for targeted rescue efforts.It uses the <b>U-Net Architecture</b> into the model pipeline, ensuring efficient training and evaluation process.
 
 
-## Upcoming Features
+## Latest Feature
 Visualization of affected area on Google Maps
