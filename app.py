@@ -52,12 +52,10 @@ def generate_html(mask_difference):
         print(contour.shape)
         
         temp_latitude = contour[:, 0, 0]
-        temp_latitude = ((temp_latitude/SIZE)*latitude_range) + latitude_base
+        temp_latitude = (( temp_latitude / SIZE ) * latitude_range ) + latitude_base
         temp_longitude = contour[:, 0, 1]
-        temp_longitude = ((temp_longitude/SIZE)*longitude_range) + longitude_base
+        temp_longitude = (( temp_longitude / SIZE ) * longitude_range ) + longitude_base
 
-        # temp_latitude  = [(x/SIZE)*latitude_range+latitude_base for x,_ in contour]
-        # temp_longitude  = [(x/SIZE)*longitude_range+longitude_base for _,x in contour]
         gmap.polygon(temp_latitude,temp_longitude, color='cornflowerblue', edge_width=10)
 
     # Draw the map to an HTML file:
@@ -100,17 +98,18 @@ def predict_flood(mask_difference):
     thresh = cv2.dilate(thresh, None, iterations=4)
     black_mask = thresh
     
-    contours,_ = cv2.findContours(black_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-
-    test = np.zeros ((SIZE, SIZE, 3), dtype=np.uint8)
-    cv2.drawContours(test,contours,-1,(0,255,0),1)  
-    st.image(test)
 
     # Create a red mask that highlights region with floods    
     red_mask = np.zeros ((SIZE, SIZE, 3), dtype=np.uint8)
     red_mask[thresh == 255] = [255,0,0]
     st.image(red_mask,caption="Predicted_Flood_Regions")
     
+    # Calculate and show contours
+    contours,_ = cv2.findContours(black_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+
+    test = np.zeros ((SIZE, SIZE, 3), dtype=np.uint8)
+    cv2.drawContours(test,contours,-1,(0,255,0),1)  
+    st.image(test)
     
     # Count the number of 1s in both masks
     count_before = np.count_nonzero(mask_before_thresholded == 255)
